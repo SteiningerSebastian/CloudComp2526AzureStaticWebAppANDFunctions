@@ -1,0 +1,24 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        hello world!
+        Number: <input type="number" id="candidate" value="13"/>
+        <button onclick="check_number()">Am I Prime?</button> 
+        <div id="result"/>
+    </body>
+</html>
+
+<script>
+    function check_number(){
+        let num = document.getElementById("candidate").value
+        let res = fetch("http://localhost:7071/api/IsPrime?number="+num)
+
+        res.then(r => {
+            r.text().then(t=>{
+                document.getElementById("result").innerText = t
+            })
+        })
+    }
+</script>
